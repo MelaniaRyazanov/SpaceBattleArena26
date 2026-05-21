@@ -12,7 +12,7 @@ public class ExampleShip extends BasicSpaceship {
     @Override
     public RegistrationData registerShip(int numImages, int worldWidth, int worldHeight)
     {
-        return new RegistrationData("Melania", new Color(55, 255, 255), 0);
+        return new RegistrationData("Melania", new Color(255, 0, 255), 0);
     }
 
     @Override
