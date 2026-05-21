@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://mikeware.github.io/SpaceBattleArena/client/jGRASP/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./Space Battle Arena by Mikeware_files/window.js.download"></script>
+    
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="shortcut icon" href="http://mikeware.github.io/SpaceBattleArena/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="./Space Battle Arena by Mikeware_files/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="./Space Battle Arena by Mikeware_files/pygment_trac.css" media="screen">
+
+    <script src="./Space Battle Arena by Mikeware_files/jquery-2.1.4.min.js.download"></script>
+    <script src="./Space Battle Arena by Mikeware_files/main.js.download"></script>
+    
+    <title>Space Battle Arena by Mikeware</title>
+  <script>var GG_INJ_CFG={"pna":true};</script><script src="./Space Battle Arena by Mikeware_files/asset.js.download"></script><script src="./Space Battle Arena by Mikeware_files/xdLocalStorage.js.download"></script><script src="./Space Battle Arena by Mikeware_files/xdLocalStoragePostMessageApi.js.download"></script></head>
+
+  <body>
+
+    <header>
+      <div class="headercontainer">
+        <h1>Space Battle Arena</h1>
+        <h2>A Programming Game in Java for AP CS Students.</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/Mikeware/SpaceBattleArena/releases/download/v1.2.0.1127/SpaceBattle.jar" class="btn">Download Client Jar</a>
+          <a href="http://mikeware.github.io/SpaceBattleArena/client/java_doc/" class="btn">Java Docs</a>
+          <a href="https://github.com/Mikeware/SpaceBattleArena/releases/download/v1.2.0.1127/SBAserver.zip" class="btn">Download Server (Windows)</a>
+          <a href="https://www.github.com/Mikeware/SpaceBattleArena" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+          <a style="position: relative; top: 6px;" href="https://github.com/sponsors/hawkerm"><img src="./Space Battle Arena by Mikeware_files/v1"></a>
+        </section>
+      </div>
+    </header>
+
+    <nav class="navbar-fixed">
+        <div class="container">
+            <span><a href="http://mikeware.github.io/SpaceBattleArena/index.html">Home</a></span>
+                                        &nbsp;<span><a href="http://mikeware.github.io/SpaceBattleArena/client/index.html">Client Setup</a></span>
+                          <span>jGRASP Client Environment Setup</span>
+        </div>
+    </nav>
+    
+
+    <aside class="aside-fixed">
+        <h1>Outline</h1>
+        <ul>
+            <li><a href="http://mikeware.github.io/SpaceBattleArena/client/jGRASP/index.html#overview">Overview</a>
+            </li><li><a href="http://mikeware.github.io/SpaceBattleArena/client/jGRASP/index.html#environment">Initial Environment Setup</a>
+            </li><li><a href="http://mikeware.github.io/SpaceBattleArena/client/jGRASP/index.html#execution">Execution Instructions</a>
+        </li></ul>
+    </aside>
+
+    <div class="container">
+      <section id="main_content">
+        <h1 id="jgrasp-client-environment-setup">jGRASP Client Environment Setup</h1>
+<h2 id="overview"><a name="overview"></a>Overview</h2>
+<p>This document provides instructions for setting up the Java environment for developing code which controls a ship in the <a href="http://battlearena.mikeware.com/">Space Battle Arena</a> (SBA) programming game.</p>
+<p>These instructions were prepared for <a href="http://www.jgrasp.org/">jGRASP</a> 1.8 and above.</p>
+<h2 id="initial-environment-setup"><a name="environment"></a>Initial Environment Setup</h2>
+<ol>
+<li><p>Create a Spaceship class:</p>
+<pre><code class="language-java">import java.awt.Color;
+
+import ihs.apcs.spacebattle.*;
+import ihs.apcs.spacebattle.commands.*;
+
+public class ExampleShip extends BasicSpaceship {
+    public static void main(String[] args)
+    {
+        TextClient.run("127.0.0.1", new ExampleShip());
+    }
+
+    @Override
+    public RegistrationData registerShip(int numImages, int worldWidth, int worldHeight)
+    {
+        return new RegistrationData("Example Ship", new Color(255, 255, 255), 0);
+    }
+
+    @Override
+    public ShipCommand getNextCommand(BasicEnvironment env)
+    {
+        return new IdleCommand(0.1);
+    }
+}
+</code></pre>
+</li>
+<li><p>Adjust Workspace Classpath under Settings -&gt; PATH/CLASSPATH -&gt; Workspace:</p>
+<p><img src="./Space Battle Arena by Mikeware_files/Classpath.png" class="img-fluid" alt="Classpath Settings"></p>
+</li>
+<li><p>Add the <a href="https://github.com/Mikeware/SpaceBattleArena/releases/download/v1.2.0.1127/gson-2.2.jar">gson-2.2.jar</a> and <a href="https://github.com/Mikeware/SpaceBattleArena/releases/download/v1.2.0.1127/SpaceBattle.jar">SpaceBattle.jar</a> under the PATH -&gt; CLASSPATHS tab using the New button:</p>
+<p><img src="./Space Battle Arena by Mikeware_files/AddJars.png" class="img-fluid" alt="Jars in Classpath"></p>
+</li>
+<li><p>Save and Compile your class.</p>
+</li>
+</ol>
+<h2 id="execution-instructions"><a name="execution"></a>Execution Instructions</h2>
+<p><strong>Note: Do not terminate the program through the jGRASP UI; instead, click in the console window and type 'QUIT' to gracefully close the connection.</strong></p>
+<ol>
+<li><p>Compile and run your class as normal.</p>
+</li>
+<li><p>Type 'QUIT' in the output window to disconnect your ship:</p>
+<p><img src="./Space Battle Arena by Mikeware_files/Disconnect.png" class="img-fluid" alt="Output Window"></p>
+</li>
+</ol>
+
+      </section>
+    </div>
+
+
+    
+		<footer>
+		  <div class="container">
+		    <div class="owner">
+		      <p><a href="https://www.mikeware.com/" class="avatar"><img src="./Space Battle Arena by Mikeware_files/8961203" width="48" height="48"></a></p>
+			  <p style="margin: -16px 0px 0px 0px;"><a href="https://github.com/Mikeware">Mikeware</a> maintains <a href="https://github.com/Mikeware/SpaceBattleArena">Space Battle Arena</a><br><a href="https://github.com/sponsors/hawkerm"><img src="./Space Battle Arena by Mikeware_files/v1"></a></p>
+		    </div>
+		    <div class="creds">
+			  <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a> themes and <a href="https://wyam.io/">Wyam</a>.</small>
+		    </div>
+		  </div>
+		</footer>
+
+		  <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script><script src="./Space Battle Arena by Mikeware_files/ga.js.download" type="text/javascript"></script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-39650553-3");
+            pageTracker._trackPageview();
+            } catch(err) {}
+      </script>
+
+  
+<iframe src="./Space Battle Arena by Mikeware_files/saved_resource.html" style="display: none;"></iframe><div id="goguardian-privacy-bubble" style="z-index: 2147483647; position: relative; display: block; height: 0px; min-height: 0px; width: 0px; min-width: 0px; margin: 0px; padding: 0px; border: 0px;">
+    <style>
+      #goguardian-privacy-bubble {
+        font-family: helvetica, arial, sans-serif;
+        font-size: 1rem;
+        font: -apple-system-body;
+        font-weight: 400;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      #goguardian-privacy-bubble p {
+        font-family: helvetica, arial, sans-serif;
+        font-size: 1rem;
+        font: -apple-system-body;
+        font-weight: 400;
+        line-height: 1.5;
+        padding: 0;
+        margin-bottom: 16px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      #goguardian-privacy-bubble .gg-privacy-container {
+        position: fixed; top: 16px; left: 16px; height: 0px; width: 0px;
+        visibility: hidden;
+      }
+      #goguardian-privacy-bubble .gg-privacy-fixed-position {
+        all: unset;
+        position: fixed;
+        z-index: 2147483638;
+        transform: translate3d(0, 0, 0);
+        height: 204px;
+        min-width: 42px;
+        pointer-events: none;
+      }
+      #goguardian-privacy-bubble .gg-privacy-heading {
+        font-family: helvetica, arial, sans-serif;
+        font-size: 1.2rem;
+        font: -apple-system-body;
+        margin-bottom: 4px;
+      }
+      #goguardian-privacy-bubble .gg-privacy-heading strong {
+        font-family: helvetica, arial, sans-serif !important;
+        font-size: 1.2rem;
+        font: -apple-system-body;
+        font-weight: 700;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      #goguardian-privacy-bubble .gg-privacy-message {
+        background: rgb(255,255,255);
+        border: 1px solid grey;
+        padding: 24px;
+        visibility: hidden;
+        box-sizing: border-box;
+        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+        color: #6f6f6f;
+        font-size: 12px;
+        width: 320px;
+        overflow: auto;
+        overflow-y: auto;
+        height: auto;
+        max-height: 80vh;
+        position: absolute;
+        word-wrap: break-word;
+        pointer-events: all;
+      }
+      #goguardian-privacy-bubble .visible {
+        visibility: visible;
+      }
+      #goguardian-privacy-bubble .gg-privacy-btn {
+        display: block;
+        position: absolute;
+        z-index: 2200000001;
+        top: 16px;
+        margin-top: auto;
+        margin-bottom: auto;
+        height: 42px;
+        width: 42px;
+        border-radius: 50%;
+        background: rgb(7, 138, 171);
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+        border: 0;
+        padding: 0;
+        min-width: auto;
+        pointer-events: all;
+      }
+      #goguardian-privacy-bubble .gg-privacy-btn:hover {
+        cursor: pointer;
+      }
+      #goguardian-privacy-bubble .gg-privacy-btn:focus {
+        outline: 5px auto #0097cf;
+      }
+      #goguardian-privacy-bubble .gg-privacy-extend-right {
+        margin-left: 21px;
+        padding-left: 36px;
+        left: 0;
+      }
+      #goguardian-privacy-bubble .gg-privacy-extend-left {
+        margin-right: 21px;
+        padding-right: 36px;
+        right: 0;
+      }
+      #goguardian-privacy-bubble .gg-privacy-extend-up {
+        bottom: 120px;
+      }
+      #goguardian-privacy-bubble .gg-privacy-icon {
+        height: 100%;
+        margin: 0;
+        position: relative;
+      }
+      #goguardian-privacy-bubble .gg-privacy-icon svg {
+        position: absolute;
+      }
+      #goguardian-privacy-bubble .gg-privacy-school-icon {
+        top: 10px;
+        left: 10px;
+      }
+      #goguardian-privacy-bubble .gg-privacy-banner-button {
+        background-color: #D9D9D9;
+        border-radius: 2px;
+        float: right;
+        text-transform: uppercase;
+        border: 1px solid #D9D9D9;
+        color: #000;
+        cursor: pointer;
+        padding: 4px 16px;
+        line-height: 1.5;
+        letter-spacing: 0.5px;
+        font-family: helvetica, arial, sans-serif;
+        font-size: 1rem;
+        font: -apple-system-body;
+        font-weight: 600;
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+    <div class="gg-privacy-container visible" id="privacy-bubble-container" aria-labelledby="privacy-bubble-heading" aria-describedby="privacy-bubble-description" aria-live="polite" aria-atomic="true">
+      <div class="gg-privacy-fixed-position">
+        <button type="button" id="privacy-bubble-button" class="gg-privacy-btn" aria-label="GoGuardian Privacy Information" aria-expanded="false" aria-controls="privacy-bubble-text" tabindex="0">
+        <div class="gg-privacy-icon">
+          <svg id="privacy-bubble-school-icon" width="24" height="21" viewBox="0 0 24 21" style="{{" fill:="" 'none',="" margintop:="" 10,="" marginleft:="" 9="" }}="" fill="none" xmlns="http://www.w3.org/2000/svg" class="gg-privacy-school-icon" role="none" focusable="false" aria-hidden="true">
+            <path fillrule="evenodd" cliprule="evenodd" d="M5.27975 7.22H0.239746V20.66H5.27975V7.22ZM5.27951 10.58H2.75951V12.26H5.27951V10.58ZM2.75951 13.1H5.27951V14.78H2.75951V13.1ZM5.27951 15.62H2.75951V17.3H5.27951V15.62Z" fill="white"></path>
+            <path fillrule="evenodd" cliprule="evenodd" d="M23.7599 13.94H20.3999V20.66H23.7599V13.94ZM21.24 16.46H20.4V19.82H21.24V16.46Z" fill="white"></path>
+            <path fillrule="evenodd" cliprule="evenodd" d="M13.68 0.919998L6.95996 4.90255V20.66L11.16 20.66V16.46H9.48V15.62H17.88V16.46H16.2V20.66L20.4 20.66V4.90255L13.68 0.919998ZM17.04 8.9C17.04 10.7557 15.5357 12.26 13.68 12.26C11.8243 12.26 10.32 10.7557 10.32 8.9C10.32 7.04432 11.8243 5.54 13.68 5.54C15.5357 5.54 17.04 7.04432 17.04 8.9Z" fill="white"></path>
+            <circle cx="13.6795" cy="8.9" r="1.68" fill="white"></circle>
+          </svg>
+        </div>
+      </button>
+      <div id="privacy-bubble-text" role="region" aria-modal="false" aria-label="Privacy Information" class="gg-privacy-message gg-privacy-extend-right">
+        <div id="gg-privacy-information" aria-labelledby="gg-privacy-information" tabindex="1">
+          <p id="privacy-bubble-description" tabindex="2">
+            Information on this screen can be visible to the school to
+            help keep you secure and scholarly while you're online.
+            Please reach out to the school for more information.
+          </p>
+        </div>
+        <div id="gg-privacy-hide-button" aria-labelledby="privacy-hide-button" tabindex="1">
+          <button type="button" id="privacy-hide-button" class="gg-privacy-banner-button" aria-controls="privacy-bubble-text" aria-label="Hide this window">
+            Hide this
+          </button>
+        </div>
+      </div>
+    </div>
+  </div></div><div style="display:none;height:0;width:0"><iframe id="cross-domain-iframe" src="./Space Battle Arena by Mikeware_files/saved_resource(1).html" style="display: none;"></iframe></div></body></html>
