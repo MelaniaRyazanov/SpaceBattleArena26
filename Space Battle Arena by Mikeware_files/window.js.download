@@ -1,1 +1,0 @@
-(()=>{"use strict";var i;window.GG_WINDOW=Object.assign(Object.assign({},window.GG_WINDOW),{fetch:null===(i=window.fetch)||void 0===i?void 0:i.bind(window),sessionStorage:window.sessionStorage})})();
